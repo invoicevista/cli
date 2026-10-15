@@ -18,7 +18,7 @@ Requires Node.js 18 or newer.
 ## Quick start
 
 ```bash
-invoicevista login                                  # choose browser or API key login
+invoicevista login                                  # choose browser, another device or API key
 invoicevista businesses list                        # the businesses of your organization
 invoicevista customers list --businessId <businessId>
 invoicevista invoices list --businessId <businessId> -n 10
@@ -41,12 +41,22 @@ invoicevista signup --email founder@example.com --json
 
 ## Authentication
 
-Two ways in, both stored in `~/.invoicevista/`:
+Three ways in, all stored in `~/.invoicevista/`:
 
 - **Browser** — `invoicevista login --browser` opens
   [app.invoicevista.com](https://app.invoicevista.com) in your browser to log
   in with your InvoiceVista account, then stores a token session. Tokens are
   refreshed automatically; requests carry `Authorization: Token base64(<jwt>)`.
+- **Another device** — `invoicevista login --device` is for a terminal whose
+  browser you cannot use: a remote desktop without copy and paste, an SSH
+  session, a server. It prints a link, a QR code and a one-time code such as
+  `WDJB-MJHT`. Scan the QR code with your phone, or open
+  app.invoicevista.com/cli on any device where you are signed in to
+  InvoiceVista and type the code; check that it matches the terminal and
+  approve. The terminal logs itself in within a couple of seconds and stores a
+  session like the browser login. The code works once and expires after ten
+  minutes. `--browser` prints the same code beside its link, so a browser that
+  opens on the wrong machine is no dead end.
 - **API key** — `invoicevista login --with-key` prompts for an API key secret
   with a masked input. An administrator of your organization creates the key
   in the InvoiceVista dashboard, per business, under **API keys**. The secret
@@ -69,6 +79,8 @@ interactive session.
 Without a terminal the CLI never hangs and never opens a browser:
 `invoicevista login` (and any command run without credentials) fails
 immediately with exit code 1 and instructions on stderr.
+`invoicevista login --device` still works there: it prints the link and the
+code and waits for someone to approve them.
 
 A key belongs to a single organization and is locked to one business, so
 neither ever has to be named on the command line; a browser session covers the
@@ -111,8 +123,9 @@ invoicevista invoices list --json -n 100 | jq '.[] | {id: ._id, status, issueTim
 
 ```bash
 invoicevista signup --email you@example.com   # create an account and log in
-invoicevista login                            # interactive: browser or API key
+invoicevista login                            # interactive: browser, another device or API key
 invoicevista login --browser                  # log in through app.invoicevista.com
+invoicevista login --device                   # approve from a phone or another computer
 invoicevista login --with-key                 # prompt for an API key secret (masked)
 invoicevista logout                           # clear everything in ~/.invoicevista/
 ```

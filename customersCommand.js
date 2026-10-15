@@ -1,5 +1,5 @@
 /* Copyright 2025 InvoiceVista LLC */
-const resourceCommand = require('./resourceCommand.js')
+import resourceCommand from './resourceCommand.js'
 
 // GET /api/customers has no limit/skip/sort — the handler runs a plain
 // find().project() — so, unlike the document resources, no pagination flags
@@ -97,4 +97,4 @@ function customersCommand() {
   })
 }
 
-module.exports = customersCommand
+export default customersCommand

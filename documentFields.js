@@ -118,10 +118,10 @@ function documentDetail(document) {
   ]
 }
 
-module.exports = {
+export {
+  documentDetail,
   documentFilters,
+  documentRow,
   documentWriteFields,
   statusField,
-  documentRow,
-  documentDetail,
 }

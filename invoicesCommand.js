@@ -1,12 +1,12 @@
 /* Copyright 2025 InvoiceVista LLC */
-const {
+import {
   documentDetail,
   documentFilters,
   documentRow,
   documentWriteFields,
   statusField,
-} = require('./documentFields.js')
-const resourceCommand = require('./resourceCommand.js')
+} from './documentFields.js'
+import resourceCommand from './resourceCommand.js'
 
 // Invoice.Status in @invoicevista/model — the exact vocabulary the API and
 // the dashboard share. A new invoice with no status is DRAFT.
@@ -36,4 +36,4 @@ function invoicesCommand() {
   })
 }
 
-module.exports = invoicesCommand
+export default invoicesCommand

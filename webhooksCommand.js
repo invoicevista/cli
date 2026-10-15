@@ -1,14 +1,12 @@
 /* Copyright 2025 InvoiceVista LLC */
-const commander = require('commander')
-const {
-  printJson,
-  withJson,
-  fail,
-} = require('@monorepool/agentfirst/output.js')
-const buildQuery = require('./buildQuery.js')
-const parseBody = require('./parseBody.js')
-const api = require('./request.js')
-const { dim, bold, cyan } = require('./formatOutput.js')
+
+import { fail, printJson, withJson } from '@monorepool/agentfirst/output.js'
+import * as commander from 'commander'
+
+import buildQuery from './buildQuery.js'
+import { bold, cyan, dim } from './formatOutput.js'
+import parseBody from './parseBody.js'
+import api from './request.js'
 
 // Webhook subscriptions are managed with an access token only — there is no
 // webhooks scope, so an API key cannot reach them. `invoicevista login
@@ -299,4 +297,4 @@ function webhooksCommand() {
   return command
 }
 
-module.exports = webhooksCommand
+export default webhooksCommand

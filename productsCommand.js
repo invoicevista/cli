@@ -1,5 +1,5 @@
 /* Copyright 2025 InvoiceVista LLC */
-const resourceCommand = require('./resourceCommand.js')
+import resourceCommand from './resourceCommand.js'
 
 // Products are the catalogue an invoice or quote line is picked from — a
 // name, a description and a unit price.
@@ -74,4 +74,4 @@ function productsCommand() {
   })
 }
 
-module.exports = productsCommand
+export default productsCommand

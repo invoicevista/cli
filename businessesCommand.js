@@ -1,5 +1,5 @@
 /* Copyright 2025 InvoiceVista LLC */
-const resourceCommand = require('./resourceCommand.js')
+import resourceCommand from './resourceCommand.js'
 
 // Businesses are the per-tenant containers every invoice, quote, customer,
 // product and payment hangs off. They are read-only here for two reasons:
@@ -47,4 +47,4 @@ function businessesCommand() {
   })
 }
 
-module.exports = businessesCommand
+export default businessesCommand

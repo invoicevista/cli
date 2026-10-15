@@ -1,13 +1,11 @@
 /* Copyright 2025 InvoiceVista LLC */
-const commander = require('commander')
-const {
-  printJson,
-  withJson,
-  fail,
-} = require('@monorepool/agentfirst/output.js')
-const buildQuery = require('./buildQuery.js')
-const parseBody = require('./parseBody.js')
-const api = require('./request.js')
+
+import { fail, printJson, withJson } from '@monorepool/agentfirst/output.js'
+import * as commander from 'commander'
+
+import buildQuery from './buildQuery.js'
+import parseBody from './parseBody.js'
+import api from './request.js'
 
 // API keys are credentials, so /api/keys accepts an access token only and the
 // caller must be an admin of the organization: run `invoicevista login
@@ -218,4 +216,4 @@ function keysCommand() {
   return command
 }
 
-module.exports = keysCommand
+export default keysCommand

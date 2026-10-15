@@ -1,11 +1,11 @@
 /* Copyright 2025 InvoiceVista LLC */
-const {
+import {
   documentDetail,
   documentFilters,
   documentRow,
   documentWriteFields,
-} = require('./documentFields.js')
-const resourceCommand = require('./resourceCommand.js')
+} from './documentFields.js'
+import resourceCommand from './resourceCommand.js'
 
 // Payments record money actually received. Unlike invoices and quotes they
 // carry no status — a recorded payment is a fact, not a state machine.
@@ -25,4 +25,4 @@ function paymentsCommand() {
   })
 }
 
-module.exports = paymentsCommand
+export default paymentsCommand

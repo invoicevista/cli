@@ -1,28 +1,36 @@
 {
   "name": "invoicevista",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "description": "InvoiceVista CLI — manage invoices, quotes, customers, products and payments from the terminal",
   "license": "Apache-2.0",
   "repository": "github:invoicevista/cli",
   "homepage": "https://www.invoicevista.com/",
   "author": "InvoiceVista",
-  "type": "commonjs",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
   "main": "./dist/index.js",
   "bin": {
-    "invoicevista": "./dist/index.js"
+    "invoicevista": "./bin/invoicevista.js"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "scripts": {
     "build": "node scripts/build.js",
+    "coverage": "vitest run --coverage",
     "develop": "node index.js",
     "prepublishOnly": "npm run build",
     "publish:npm": "npm publish --access public",
-    "publish:repo": "node scripts/publishCli.mjs"
+    "publish:repo": "node scripts/publishCli.mjs",
+    "test": "vitest run",
+    "test:smoke": "npm run build && node scripts/smoke.js"
   },
   "files": [
+    "bin",
     "dist",
     "skills"
   ],
@@ -41,7 +49,8 @@
   },
   "devDependencies": {
     "@monorepool/agentfirst": "0.0.0",
+    "@monorepool/root": "0.0.0",
     "esbuild": "0.25.4",
-    "eslint": "10.8.0"
+    "vitest": "catalog:"
   }
 }

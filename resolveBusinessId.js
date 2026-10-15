@@ -7,7 +7,7 @@
 // session must send it. On update, when the caller passed no --businessId,
 // reuse the businessId of the stored record — one extra read, and it needs
 // the matching `:read` scope.
-module.exports = async function resolveBusinessId(options, body, getExisting) {
+export default async function resolveBusinessId(options, body, getExisting) {
   let businessId = options.businessId || body.businessId
 
   if (!businessId) {

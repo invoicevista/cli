@@ -1,12 +1,12 @@
 /* Copyright 2025 InvoiceVista LLC */
-const {
+import {
   documentDetail,
   documentFilters,
   documentRow,
   documentWriteFields,
   statusField,
-} = require('./documentFields.js')
-const resourceCommand = require('./resourceCommand.js')
+} from './documentFields.js'
+import resourceCommand from './resourceCommand.js'
 
 // Quote.Status in @invoicevista/model. A new quote with no status is DRAFT;
 // APPROVED and REJECTED are the two decisions the pipeline reports on.
@@ -28,4 +28,4 @@ function quotesCommand() {
   })
 }
 
-module.exports = quotesCommand
+export default quotesCommand
